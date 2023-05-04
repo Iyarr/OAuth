@@ -12,7 +12,7 @@ def index(request):
     return render(request,'App_Folder_HTML/index.html',context=params)
 
 def login(repuest):
-    return HttpResponse("successful! Welcome" + repuest.path
+    return HttpResponse("successful! Welcome " + repuest.session['id']
         if verify(repuest) 
         else "Permission Denied" 
     ) 
@@ -23,6 +23,12 @@ def SignUp(repuest):
 
     response = HttpResponse("Cookie is set")
     response.set_cookie('sessionID', sessionID )
+
+    return response
+
+def logOut(repuest):
+    response = HttpResponse("Cookie is deleted")
+    response.set_cookie('sessionID', None )
 
     return response
 
