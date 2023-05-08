@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
-from .ClientProcess.login import verify
+from .ClientProcess.login import SessionIDCheck
 import secrets
 import sys
 
@@ -11,24 +11,27 @@ def index(request):
     # 出力
     return render(request,'App_Folder_HTML/index.html',context=params)
 
-def login(repuest):
+def login(repuest,UserName):
     return HttpResponse("successful! Welcome " + repuest.session['id']
-        if verify(repuest) 
+        if SessionIDCheck(repuest,UserName) 
         else "Permission Denied" 
     ) 
 
-def SignUp(repuest):
+def SignUp(repuest,UserName):
     sessionID = secrets.token_hex(32)
     repuest.session['id'] = sessionID
+    repuest.session['UserName'] = UserName
 
     response = HttpResponse("Cookie is set")
     response.set_cookie('sessionID', sessionID )
+    response.set_cookie('UserName', UserName )
 
     return response
 
-def logOut(repuest):
+def logOut(repuest,UserName):
     response = HttpResponse("Cookie is deleted")
-    response.set_cookie('sessionID', None )
+    response.delete_cookie('sessionID')
+    response.delete_cookie('UserName')
 
     return response
 
