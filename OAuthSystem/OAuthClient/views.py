@@ -6,18 +6,15 @@ import sys
 
 # Create your views here.
 def index(request):
-    # 変数設定
-    params = {"message_me": "Hello World"}
-    # 出力
-    return render(request,'App_Folder_HTML/index.html',context=params)
+    return render(request,'index.html')
 
-def login(repuest,UserName):
-    return HttpResponse("successful! Welcome " + repuest.session['id']
+def logIn(repuest,UserName):
+    return HttpResponse("successful! Welcome " + repuest.session['UserName']
         if SessionIDCheck(repuest,UserName) 
         else "Permission Denied" 
     ) 
 
-def SignUp(repuest,UserName):
+def logOn(repuest,UserName):
     sessionID = secrets.token_hex(32)
     repuest.session['id'] = sessionID
     repuest.session['UserName'] = UserName

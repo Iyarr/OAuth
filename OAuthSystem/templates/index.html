@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action=""method="get">
+        <div class="loginForm">
+            <label>
+                <label for="LoginName">ログイン</label>
+                <input type="text" id="LoginName" >
+                <input type="button" value="login" onclick="LoginUserName()">
+            </label>
+
+            <script language="javascript" type="text/javascript">
+                const LoginUserName = () => {
+                    window.location.href = "http://localhost:8000/login/"+ document.getElementById('LoginName').value;
+                };
+            </script>
+        </div>
+    </form>
+
+    <form action="" method="get">
+        <div class="signupForm">
+            <label>
+                <label for="LogonName">ログオン</label>
+                <input type="text" id="LogonName">
+                <input type="button" value="logon"  onclick="logOnUserName()">
+            </label>
+            
+            <script language="javascript" type="text/javascript">
+                const logOnUserName = () => {
+                    window.location.href = "http://localhost:8000/logon/"+document.getElementById('LogonName').value;
+                };
+            </script>
+        </div>
+    </form>
+    
+
+</body>
+</html>
