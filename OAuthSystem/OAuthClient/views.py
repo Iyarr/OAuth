@@ -9,9 +9,9 @@ def index(request):
     return render(request,'index.html')
 
 def logIn(repuest,UserName):
-    return HttpResponse("successful! Welcome " + repuest.session['UserName']
+    return HttpResponse("successful! Welcome " + UserName
         if SessionIDCheck(repuest,UserName) 
-        else "Permission Denied" 
+        else "Permission Denied"
     ) 
 
 def logOn(repuest,UserName):
@@ -21,14 +21,12 @@ def logOn(repuest,UserName):
 
     response = HttpResponse("Cookie is set")
     response.set_cookie('sessionID', sessionID )
-    response.set_cookie('UserName', UserName )
 
     return response
 
 def logOut(repuest,UserName):
     response = HttpResponse("Cookie is deleted")
     response.delete_cookie('sessionID')
-    response.delete_cookie('UserName')
 
     return response
 
