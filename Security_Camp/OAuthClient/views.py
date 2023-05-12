@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpRequest
 from .ClientProcess.login import SessionIDCheck
 import secrets
-import sys
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    return render(request,'oauth.html')
 
 def logIn(repuest,UserName):
     return HttpResponse("successful! Welcome " + UserName
