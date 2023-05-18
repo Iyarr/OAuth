@@ -30,4 +30,4 @@ jobs:
     - name: Run Tests
       run: |
         cd ./Security_Camp
-        python manage.py test
+        pipenv run python manage.py test
