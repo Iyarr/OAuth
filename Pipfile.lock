@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "768e5957cd77e3afcb810eb158ff632bb2eeb7ed18b888955aabd342a41ad9dd"
+            "sha256": "7ab7fd5b8ee4f250b35b8c57d88982385cc2237ef3a09540c219d362d6307044"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.10"
+            "python_version": "3.10.11"
         },
         "sources": [
             {
@@ -31,6 +31,14 @@
             ],
             "index": "pypi",
             "version": "==4.2.1"
+        },
+        "django-cors-headers": {
+            "hashes": [
+                "sha256:a971cd4c75b29974068cc36b5c595698822f1e0edd5f1b32ea42ea37326ad4aa",
+                "sha256:e3cbd247a1a835da4cf71a70d4214378813ea7e08337778b82cb2c1bc19d28d6"
+            ],
+            "index": "pypi",
+            "version": "==4.0.0"
         },
         "oauthlib": {
             "hashes": [

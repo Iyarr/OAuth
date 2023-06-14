@@ -8,19 +8,19 @@ def index(request):
     return render(request,'oauth.html')
 
 def logIn(repuest,UserName):
-    return HttpResponse("successful! Welcome " + UserName
-        if SessionIDCheck(repuest,UserName) 
-        else "Permission Denied"
-    ) 
+    if SessionIDCheck(repuest,UserName) :
+        response = HttpResponse("successful! Welcome " + UserName )
+    else:
+        response = HttpResponse("Permission Denied")
+    return response
 
 def logOn(repuest,UserName):
     sessionID = secrets.token_hex(32)
     repuest.session['id'] = sessionID
     repuest.session['UserName'] = UserName
-
+    
     response = HttpResponse("Cookie is set")
     response.set_cookie('sessionID', sessionID )
-
     return response
 
 def logOut(repuest,UserName):
